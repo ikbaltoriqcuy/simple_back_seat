@@ -2,7 +2,8 @@
 
 # Project Name
 
-![Logo](https://github.com/ikbaltoriqcuy/simple_back_seat/assets/55827878/a978ef40-24cd-4a64-94a0-82ea744e0338)
+<Img src="https://github.com/ikbaltoriqcuy/simple_back_seat/assets/55827878/a978ef40-24cd-4a64-94a0-82ea744e0338" width ="600" />
+
 
 ## Introduction
 
