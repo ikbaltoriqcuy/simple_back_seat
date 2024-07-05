@@ -29,19 +29,20 @@ Created by ikbaltoriq on 05,July,2024
 
 @Composable
 fun PaymentItems() {
-    Row(modifier = Modifier.fillMaxHeight(0.60f)) {
+    Row(modifier = Modifier.fillMaxHeight(fraction =  0.60f)) {
         PaymentIcon(
             imgResId = R.drawable.ic_qris,
             imgSize = 60.dp,
-            modifier = Modifier.weight(0.5f))
+            modifier = Modifier.weight(weight = 0.5f)
+        )
 
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(width = 16.dp))
 
         PaymentIconWithText(
             imgResId = R.drawable.ic_ezpoint,
             imgSize = 40.dp,
             label = "EZ Point",
-            modifier = Modifier.weight(0.5f)
+            modifier = Modifier.weight(weight = 0.5f)
         )
 
     }
@@ -55,8 +56,8 @@ private fun PaymentIcon(
 ) {
     Row(
         modifier = modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(Color.White)
+            .clip(shape = RoundedCornerShape(size = 8.dp))
+            .background(color = Color.White)
             .fillMaxHeight(),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
@@ -64,7 +65,7 @@ private fun PaymentIcon(
         Image(
             painter = painterResource(id = imgResId),
             contentDescription = "bluebird",
-            modifier = Modifier.size(imgSize)
+            modifier = Modifier.size(size = imgSize)
         )
     }
 }
@@ -78,8 +79,8 @@ private fun PaymentIconWithText(
 ) {
     Row(
         modifier = modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(Color.White)
+            .clip(shape = RoundedCornerShape(size = 8.dp))
+            .background(color = Color.White)
             .fillMaxHeight(),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
@@ -88,15 +89,14 @@ private fun PaymentIconWithText(
         Image(
             painter = painterResource(id = imgResId),
             contentDescription = "Payment",
-            modifier = Modifier.size(imgSize)
+            modifier = Modifier.size(size = imgSize)
         )
         Text(
             text = label,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFFFF753F),
-            modifier = Modifier
-                .absolutePadding(left = 8.dp)
+            modifier = Modifier.absolutePadding(left = 8.dp)
         )
     }
 }

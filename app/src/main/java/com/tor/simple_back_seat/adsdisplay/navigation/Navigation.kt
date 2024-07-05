@@ -42,7 +42,7 @@ fun Navigation(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier
-            .fillMaxHeight(0.2f)
+            .fillMaxHeight(fraction = 0.2f)
             .background(brush = gradient),
         verticalArrangement = Arrangement.Center,
     ) {
@@ -61,24 +61,24 @@ private fun ItemNavigation(item: ItemNavigation) {
     ) {
         Box(
             modifier = Modifier
-                .width(60.dp)
-                .height(60.dp)
-                .clip(shape = RoundedCornerShape(8.dp))
-                .background(Color.White)
+                .width(width = 60.dp)
+                .height(height = 60.dp)
+                .clip(shape = RoundedCornerShape(size = 8.dp))
+                .background(color = Color.White)
         )
         {
             Image(
                 painter = painterResource(id = item.icon),
                 contentDescription = "Navigation",
                 modifier = Modifier
-                    .align(Alignment.Center)
-                    .size(40.dp)
+                    .align(alignment = Alignment.Center)
+                    .size(size = 40.dp)
             )
         }
         Text(
             text = item.title,
             fontSize = 14.sp,
-            modifier = Modifier.width(60.dp),
+            modifier = Modifier.width(width = 60.dp),
             textAlign = TextAlign.Center,
             color = Color.White
         )

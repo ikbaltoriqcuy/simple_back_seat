@@ -25,9 +25,9 @@ Created by ikbaltoriq on 05,July,2024
 fun OSMMapXML(lat: Double, long: Double) {
     Box(
         Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(Color.White)
-            .fillMaxHeight(0.90f)
+            .clip(shape = RoundedCornerShape(size = 8.dp))
+            .background(color = Color.White)
+            .fillMaxHeight(fraction = 0.90f)
     )
     {
         AndroidView(

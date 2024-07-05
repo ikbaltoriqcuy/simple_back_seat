@@ -32,15 +32,15 @@ fun Header() {
     Box {
         Row(
             modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
-                .background(Color.Black.copy(alpha = 0.7f))
+                .clip(RoundedCornerShape(size = 8.dp))
+                .background(color = Color.Black.copy(alpha = 0.7f))
                 .padding(horizontal = 16.dp, vertical = 8.dp)
                 .fillMaxWidth()
         ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_car_bb),
                 contentDescription = "bluebird",
-                modifier = Modifier.size(60.dp)
+                modifier = Modifier.size(size = 60.dp)
             )
             Text(
                 text = "Bluebird",
@@ -50,7 +50,7 @@ fun Header() {
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .absolutePadding(left = 8.dp)
-                    .align(Alignment.CenterVertically)
+                    .align(alignment = Alignment.CenterVertically)
             )
         }
     }
