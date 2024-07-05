@@ -42,16 +42,16 @@ fun SeekbarItems() {
             value = sliderPositionSound,
             onValueChange = { sliderPositionSound = it},
             icon = R.drawable.ic_speaker,
-            modifier = Modifier.weight(0.5f)
+            modifier = Modifier.weight(weight = 0.5f)
         )
 
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(width = 16.dp))
 
         SeekbarIcon(
             value = sliderPositionBrightness,
             onValueChange = { sliderPositionBrightness = it},
             icon = R.drawable.ic_brightness,
-            modifier = Modifier.weight(0.5f)
+            modifier = Modifier.weight(weight = 0.5f)
         )
     }
 }
@@ -65,8 +65,8 @@ private fun SeekbarIcon(
 ) {
     Row(
         modifier = modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(Color.Black.copy(alpha = 0.7f))
+            .clip(shape = RoundedCornerShape(size = 8.dp))
+            .background(color = Color.Black.copy(alpha = 0.7f))
             .padding(horizontal = 8.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
@@ -74,7 +74,7 @@ private fun SeekbarIcon(
         Image(
             painter = painterResource(id = icon),
             contentDescription = "Seekbar",
-            modifier = Modifier.size(25.dp)
+            modifier = Modifier.size(size = 25.dp)
         )
         Slider(
             colors = SliderDefaults.colors(

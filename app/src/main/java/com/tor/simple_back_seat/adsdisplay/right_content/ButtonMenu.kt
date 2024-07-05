@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -29,13 +30,13 @@ Created by ikbaltoriq on 05,July,2024
 @Composable
 fun ButtonMenu() {
     Row {
-        val modifier = Modifier.weight(0.5f)
+        val modifier = Modifier.weight(weight = 0.5f)
         ButtonIcon(
             label = "Peta Rute",
             icon = R.drawable.ic_route,
             modifier = modifier
         )
-        Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.width(width = 16.dp))
         ButtonIcon(
             label = "Iklan",
             icon = R.drawable.ic_play,
@@ -52,8 +53,8 @@ fun ButtonIcon(
 ) {
     Row(
         modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .background(Color.Black.copy(alpha = 0.7f))
+            .clip(shape = RoundedCornerShape(size = 16.dp))
+            .background(color = Color.Black.copy(alpha = 0.7f))
             .fillMaxHeight(),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
@@ -61,7 +62,8 @@ fun ButtonIcon(
         Image(
             painter = painterResource(id = icon),
             contentDescription = "Button",
-            modifier = Modifier.size(30.dp)
+            colorFilter = ColorFilter.tint(color = Color.White),
+            modifier = Modifier.size(size = 20.dp)
         )
         Text(
             modifier = Modifier.absolutePadding(left = 8.dp),

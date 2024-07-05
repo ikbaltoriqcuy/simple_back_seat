@@ -61,19 +61,19 @@ val itemsCarInfo = listOf(
 fun Body(profile: Profile) {
     Box(
         modifier = Modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(Color.Black.copy(alpha = 0.7f))
+            .clip(shape = RoundedCornerShape(size = 8.dp))
+            .background(color = Color.Black.copy(alpha = 0.7f))
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .fillMaxHeight(0.7f)
+            .fillMaxHeight(fraction = 0.7f)
     ) {
         Column {
-            Profile(profile)
+            Profile(profile = profile)
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(minSize = 128.dp),
                 content = {
                     items(itemsCarInfo.size) {
                         ItemCarInfo(
-                            itemsCarInfo[it],
+                            data = itemsCarInfo[it],
                             modifier = Modifier.absolutePadding(top = 32.dp)
                         )
                     }
@@ -87,15 +87,15 @@ private fun Profile(profile: Profile) {
     Row {
         Box(
             modifier = Modifier
-                .size(80.dp)
-                .clip(CircleShape)
-                .background(Color.White)
-                .align(Alignment.CenterVertically)
+                .size(size = 80.dp)
+                .clip(shape = CircleShape)
+                .background(color = Color.White)
+                .align(alignment = Alignment.CenterVertically)
         ) {
             Image(
                 painter = painterResource(id = profile.imgProfile),
                 contentDescription = "Profile",
-                modifier = Modifier.size(80.dp)
+                modifier = Modifier.size(size = 80.dp)
             )
         }
         Column {
@@ -112,20 +112,20 @@ private fun ItemCarInfo(data: ItemCarInfo, modifier: Modifier) {
         Row {
             Box(
                 modifier = Modifier
-                    .size(50.dp)
-                    .clip(CircleShape)
-                    .background(Color.White),
+                    .size(size = 50.dp)
+                    .clip(shape = CircleShape)
+                    .background(color = Color.White),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
                     painter = painterResource(id = data.icon),
                     contentDescription = "Car Info",
-                    modifier = Modifier.size(30.dp)
+                    modifier = Modifier.size(size = 30.dp)
                 )
             }
             Column {
-                Body1(data.titleInfo)
-                SubTitle1(data.valueInfo)
+                Body1(label = data.titleInfo)
+                SubTitle1(label = data.valueInfo)
             }
         }
     }
@@ -134,26 +134,24 @@ private fun ItemCarInfo(data: ItemCarInfo, modifier: Modifier) {
 // components
 
 @Composable
-private fun SubTitle1(label: String){
+private fun SubTitle1(label: String) {
     Text(
         text = label,
         fontSize = 20.sp,
         fontWeight = FontWeight.Bold,
         color = Color.White,
-        modifier = Modifier
-            .absolutePadding(left = 8.dp)
+        modifier = Modifier.absolutePadding(left = 8.dp)
     )
 }
 
 @Composable
-private fun SubTitle2(label: String){
+private fun SubTitle2(label: String) {
     Text(
         text = label,
         fontSize = 15.sp,
         textAlign = TextAlign.Center,
         color = Color.White,
-        modifier = Modifier
-            .absolutePadding(left = 8.dp)
+        modifier = Modifier.absolutePadding(left = 8.dp)
     )
 }
 
@@ -164,7 +162,6 @@ private fun Body1(label: String) {
         fontSize = 12.sp,
         textAlign = TextAlign.Center,
         color = Color.White,
-        modifier = Modifier
-            .absolutePadding(left = 8.dp)
+        modifier = Modifier.absolutePadding(left = 8.dp)
     )
 }
