@@ -32,7 +32,7 @@ fun ButtonMenu() {
         val modifier = Modifier.weight(0.5f)
         ButtonIcon(
             label = "Peta Rute",
-            icon = R.drawable.ic_speaker,
+            icon = R.drawable.ic_route,
             modifier = modifier
         )
         Spacer(modifier = Modifier.width(16.dp))
