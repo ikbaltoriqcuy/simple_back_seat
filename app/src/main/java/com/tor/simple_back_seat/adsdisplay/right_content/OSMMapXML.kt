@@ -33,11 +33,14 @@ fun OSMMapXML(lat: Double, long: Double) {
         AndroidView(
             factory = { context ->
                 context.loadOSM()
-
                 val parent = FrameLayout(context)
-                LayoutInflater.from(context).inflate(R.layout.osm_map, parent, false).apply {
-                    findViewById<MapView>(R.id.map).setupOSM(lat, long)
-                }
+
+                LayoutInflater
+                    .from(context)
+                    .inflate(R.layout.osm_map, parent, false)
+                    .apply {
+                        findViewById<MapView>(R.id.map).setupOSM(lat, long)
+                    }
             },
             update = {}
         )
