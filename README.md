@@ -1,6 +1,6 @@
 # Simple Back Seat Design UI
 
-<Img src="https://github.com/ikbaltoriqcuy/simple_back_seat/assets/55827878/1a34e6f2-e97d-4cb4-a9ed-c84c982de7ba" width ="600" />
+<Img src="https://github.com/ikbaltoriqcuy/simple_back_seat/assets/55827878/1a34e6f2-e97d-4cb4-a9ed-c84c982de7ba" width ="1200" />
 
 ## Introduction
 
