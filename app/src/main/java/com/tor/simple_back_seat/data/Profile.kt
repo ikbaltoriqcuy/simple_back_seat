@@ -1,4 +1,4 @@
-package com.tor.simple_back_seat.adsdisplay.data
+package com.tor.simple_back_seat.data
 
 
 /**

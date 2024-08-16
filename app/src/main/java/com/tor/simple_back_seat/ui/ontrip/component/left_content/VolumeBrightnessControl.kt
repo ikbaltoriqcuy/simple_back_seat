@@ -1,4 +1,4 @@
-package com.tor.simple_back_seat.adsdisplay.left_content
+package com.tor.simple_back_seat.ui.ontrip.component.left_content
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tor.simple_back_seat.R
 
@@ -31,18 +32,19 @@ import com.tor.simple_back_seat.R
 Created by ikbaltoriq on 05,July,2024
  **/
 
+@Preview
 @Composable
-fun SeekbarItems() {
+fun VolumeBrightnessControl() {
     var sliderPositionSound by remember { mutableStateOf(0f) }
     var sliderPositionBrightness by remember { mutableStateOf(0f) }
 
     Row(modifier = Modifier.fillMaxHeight()) {
-
+        val weight50 = Modifier.weight(weight = 0.5f)
         SeekbarIcon(
             value = sliderPositionSound,
             onValueChange = { sliderPositionSound = it},
             icon = R.drawable.ic_speaker,
-            modifier = Modifier.weight(weight = 0.5f)
+            modifier = weight50
         )
 
         Spacer(modifier = Modifier.width(width = 16.dp))
@@ -51,7 +53,7 @@ fun SeekbarItems() {
             value = sliderPositionBrightness,
             onValueChange = { sliderPositionBrightness = it},
             icon = R.drawable.ic_brightness,
-            modifier = Modifier.weight(weight = 0.5f)
+            modifier = weight50
         )
     }
 }

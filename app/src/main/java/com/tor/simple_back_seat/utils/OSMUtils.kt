@@ -13,37 +13,42 @@ Created by ikbaltoriq on 03,August,2023
 
 object OSMUtils {
 
-    private const val LOG_LOAD_OSM = "load OSM"
-    private const val LOG_SETUP_OSM = "setup OSM "
-
     fun Context.loadOSM() {
-        Configuration
-            .getInstance()
-            .load(this, PreferenceManager.getDefaultSharedPreferences(this))
+        try {
+            Configuration
+                .getInstance()
+                .load(this, PreferenceManager.getDefaultSharedPreferences(this))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     fun MapView.setupOSM(lat: Double, long: Double) {
-        val startMarker = Marker(this)
-        val mapController = controller
-        val startPoint = GeoPoint(lat, long)
+        try {
+            val startMarker = Marker(this)
+            val mapController = controller
+            val startPoint = GeoPoint(lat, long)
 
-        setBuiltInZoomControls(true)
-        setMultiTouchControls(true)
+            setBuiltInZoomControls(true)
+            setMultiTouchControls(true)
 
-        mapController.apply {
-            setZoom(18.0)
-            setCenter(startPoint)
-        }
-
-        startMarker.apply {
-            position = startPoint
-            setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-            setOnMarkerClickListener { marker, _ ->
-                marker.infoWindow.close()
-                true
-
+            mapController.apply {
+                setZoom(18.0)
+                setCenter(startPoint)
             }
+
+            startMarker.apply {
+                position = startPoint
+                setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                setOnMarkerClickListener { marker, _ ->
+                    marker.infoWindow.close()
+                    true
+
+                }
+            }
+            overlays.add(startMarker)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        overlays.add(startMarker)
     }
 }
