@@ -1,7 +1,9 @@
-package com.tor.simple_back_seat.adsdisplay.navigation
+package com.tor.simple_back_seat.ui.ontrip.component.navigation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,29 +13,39 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.tor.simple_back_seat.R
-import com.tor.simple_back_seat.adsdisplay.data.ItemNavigation
+import com.tor.simple_back_seat.data.ui.ItemNavigation
+import com.tor.simple_back_seat.ui.viewutils.Body2
 
 /**
 Created by ikbaltoriq on 05,July,2024
  **/
 
+const val ID_ORDER = 0
+const val ID_ENTERTAINMENT = 1
+
+@Preview
 @Composable
 fun Navigation(modifier: Modifier = Modifier) {
+    var idHighlights by remember { mutableIntStateOf(0) }
+
     val items = mutableListOf(
-        ItemNavigation(R.drawable.ic_bluebird, "Order"),
-        ItemNavigation(R.drawable.ic_cinema, "Hiburan"),
+        ItemNavigation(ID_ORDER, R.drawable.icon_taxi, "Order"),
+        ItemNavigation(ID_ENTERTAINMENT, R.drawable.ic_cinema, "Hiburan"),
     )
 
     val gradient = Brush.linearGradient(
@@ -44,27 +56,33 @@ fun Navigation(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxHeight(fraction = 0.2f)
             .background(brush = gradient),
+        horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        items.forEach {
-            ItemNavigation(it)
+        items.forEach { itemNavigation ->
+            ItemNavigation(itemNavigation, idHighlights) { id ->
+                idHighlights = id
+            }
         }
     }
 }
 
 @Composable
-private fun ItemNavigation(item: ItemNavigation) {
+private fun ItemNavigation(item: ItemNavigation, idHighlights: Int, onClick: (Int)-> Unit = {}) {
+    val interactionSource = remember { MutableInteractionSource() }
     Column(
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .padding(bottom = 8.dp),
+        modifier = Modifier.padding(bottom = 8.dp),
     ) {
         Box(
             modifier = Modifier
                 .width(width = 60.dp)
                 .height(height = 60.dp)
                 .clip(shape = RoundedCornerShape(size = 8.dp))
-                .background(color = Color.White)
+                .background(color = if (idHighlights == item.id) Color.Black.copy(alpha = 0.3f) else Color.White)
+                .clickable(
+                    interactionSource = interactionSource,
+                    indication = rememberRipple(color = Color.Black)
+                ) { onClick.invoke(item.id) }
         )
         {
             Image(
@@ -75,12 +93,6 @@ private fun ItemNavigation(item: ItemNavigation) {
                     .size(size = 40.dp)
             )
         }
-        Text(
-            text = item.title,
-            fontSize = 14.sp,
-            modifier = Modifier.width(width = 60.dp),
-            textAlign = TextAlign.Center,
-            color = Color.White
-        )
+        Body2(item.title)
     }
 }
